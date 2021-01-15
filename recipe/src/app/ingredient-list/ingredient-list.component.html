@@ -1,0 +1,71 @@
+
+<div class="container"> 
+
+<!--Using Angular form-->
+  <hr>
+  <h5>Using angular Form</h5>
+ <div class="row">
+    <div class="col-xs-12">
+      <form (ngSubmit)= "onSubmit(fValue)" #fValue= "ngForm">
+        <div class="row">
+          <div class="col-sm-8 form-group">
+            <label for="name">Name</label>
+            <input           
+              id="name"  
+              type="text"
+              class="form-control"
+              name= "name"
+              ngModel            
+            >
+  
+          </div>
+          <div class="col-sm-3 form-group">
+            <label for="amount">Amount</label>
+            <!--[ngModel] = "defaultValue" used to set default value ****** #amount = "ngModel" is used as an object 
+              to retrive ngModel directive  -->
+            <input              
+              id="amount"
+              type="number"
+              class="form-control"                           
+              name="amount"
+              ngModel
+              required
+              pattern="^[1-9]+[0-9]*$"             
+            >                          
+          </div>          
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12">
+            <button
+              class="btn btn-success"
+              type="submit"
+              [disabled]= "!fValue.valid"
+            > Add Ingredient
+          </button>         
+          
+          </div>
+        </div>
+      </form>
+    </div>
+     
+  </div>
+ <hr>
+ <div class="row">
+  
+    <ul class="list-group">
+   
+      <div
+        class="list-group-item"
+        *ngFor="let ingredient of ingredients"        
+      >
+        {{ ingredient.name }} ({{ ingredient.amount }})
+    </div>
+ 
+    </ul>
+  
+</div>
+
+        
+</div>
+
